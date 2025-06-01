@@ -4,6 +4,7 @@ export const Cell: React.FC<CellProps> = ({ alive, onClick }) => {
   return (
     <div
       onClick={onClick}
+      role='button'
       style={{
         width: 20,
         height: 20,
