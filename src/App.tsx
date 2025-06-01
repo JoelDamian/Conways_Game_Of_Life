@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { NUM_COLS, REFRESH_TIME } from './config/grid-config';
 import { createEmptyGrid, getLiveNeighbors } from './services/grid-service';
 import { type Grid } from './models/grid-models';
-import { Cell } from './components/cell/Cell';
 import { Controls } from './components/controls/Controls';
+import { GameBoard } from './components/game-board/GameBoard';
 import './App.css';
 
 function App() {
@@ -45,23 +45,8 @@ function App() {
   return (
     <div className='app-container'>
       <h1>Conway's Game of Life</h1>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: `repeat(${NUM_COLS}, 20px)`,
-        }}
-      >
-        {grid.flatMap((row: boolean[], i: number) =>
-          row.map((cell: boolean, j: number) => (
-            <Cell
-              key={`${i}-${j}`}
-              alive={cell}
-              onClick={() => handleToggleCell(i, j)}
-            />
-          ))
-        )}
-      </div>
-     <Controls
+      <GameBoard grid={grid} onToggle={handleToggleCell} numcols={NUM_COLS} />
+      <Controls
         running={running}
         onToggleRun={() => setRunning(!running)}
         onReset={resetGrid}

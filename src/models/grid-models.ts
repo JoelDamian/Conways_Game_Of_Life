@@ -10,3 +10,10 @@ export interface ControlsProps {
   onToggleRun: () => void;
   onReset: () => void;
 }
+
+export type GameBoardrops = {
+  grid: boolean[][];
+  onToggle: (i: number, j: number) => void;
+  numcols: number;
+  cellSize?: number;
+};

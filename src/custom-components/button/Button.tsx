@@ -1,4 +1,3 @@
-import React from 'react';
 import { type ButtonProps } from '../../models/custom-models';
 
 export const Button: React.FC<ButtonProps> = ({ onClick, style, children }) => {
