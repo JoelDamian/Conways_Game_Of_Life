@@ -10,6 +10,7 @@ const grid: boolean[][] = Array.from({ length: NUM_ROWS }, () =>
 function App() {
   return (
     <div className='app-container'>
+      <h1>Conway's Game of Life</h1>
       <div
         style={{
           display: 'grid',
