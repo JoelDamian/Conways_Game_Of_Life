@@ -1,4 +1,5 @@
 import { type ControlsProps } from '../../models/grid-models';
+import { Button } from '../../custom-components/button/Button';
 import './Controls.css';
 
 export const Controls: React.FC<ControlsProps> = ({
@@ -8,8 +9,8 @@ export const Controls: React.FC<ControlsProps> = ({
 }) => {
   return (
     <div className='controls-contaier'>
-      <button onClick={onReset}>Reset</button>
-      <button onClick={onToggleRun}>{running ? 'Pause' : 'Play'}</button>
+      <Button onClick={onReset}>Reset</Button>
+      <Button onClick={onToggleRun}>{running ? 'Pause' : 'Play'}</Button>
     </div>
   );
 };
