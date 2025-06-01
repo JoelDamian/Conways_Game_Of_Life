@@ -1,5 +1,5 @@
-.app-container {
-    display: grid;
+.controls-contaier {
+    display: flex;
     place-items: center;
     place-content: center;
     gap: 16px;

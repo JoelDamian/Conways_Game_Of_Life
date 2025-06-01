@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { NUM_COLS, REFRESH_TIME} from './config/grid-config';
+import { NUM_COLS, REFRESH_TIME } from './config/grid-config';
 import { createEmptyGrid, getLiveNeighbors } from './services/grid-service';
-import { type Grid } from "./models/grid-models";
+import { type Grid } from './models/grid-models';
+import { Cell } from './components/cell/Cell';
+import { Controls } from './components/controls/Controls';
 import './App.css';
-
 
 function App() {
   const [grid, setGrid] = useState<Grid>(createEmptyGrid);
@@ -13,7 +14,7 @@ function App() {
     setGrid((prevGrid) =>
       prevGrid.map((row, i) =>
         row.map((cell, j) => {
-           const liveNeighbors = getLiveNeighbors(prevGrid, i, j);
+          const liveNeighbors = getLiveNeighbors(prevGrid, i, j);
           if (cell && (liveNeighbors === 2 || liveNeighbors === 3)) return true;
           if (!cell && liveNeighbors === 3) return true;
           return false;
@@ -52,33 +53,19 @@ function App() {
       >
         {grid.flatMap((row: boolean[], i: number) =>
           row.map((cell: boolean, j: number) => (
-            <div
+            <Cell
               key={`${i}-${j}`}
+              alive={cell}
               onClick={() => handleToggleCell(i, j)}
-              style={{
-                width: 20,
-                height: 20,
-                backgroundColor: cell ? 'black' : 'white',
-                border: '1px solid #ccc',
-              }}
             />
           ))
         )}
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '16px',
-          marginTop: '16px'
-        }}
-      >
-        <button onClick={resetGrid}>Reset</button>
-        <button onClick={() => setRunning(!running)}>
-          {running ? 'Pause' : 'Play'}
-        </button>
-      </div>
+     <Controls
+        running={running}
+        onToggleRun={() => setRunning(!running)}
+        onReset={resetGrid}
+      />
     </div>
   );
 }
