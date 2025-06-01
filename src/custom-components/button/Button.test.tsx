@@ -5,9 +5,9 @@ import { Button } from '../../custom-components/button/Button';
 describe('Button', () => {
   it('calls onClick when clicked', () => {
     const onClick = vi.fn();
-    render(<Button onClick={onClick}>Click Me</Button>);
+    render(<Button onClick={onClick} data-testid="buttonTest">Click Me</Button>);
 
-    fireEvent.click(screen.getByText(/click me/i));
+    fireEvent.click(screen.getByTestId('buttonTest'));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

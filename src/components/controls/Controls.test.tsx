@@ -25,11 +25,11 @@ describe('Controls', () => {
   it('calls onReset and resets input value', () => {
     const { onReset } = setup();
 
-    const input = screen.getByRole('textbox') as HTMLInputElement;
+    const input = screen.getByTestId('inputNext') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '7' } });
     expect(input.value).toBe('7');
 
-    fireEvent.click(screen.getByText('Reset'));
+    fireEvent.click(screen.getByTestId('reset'));
     expect(onReset).toHaveBeenCalled();
     expect(input.value).toBe('0');
   });
@@ -37,30 +37,30 @@ describe('Controls', () => {
   it('calls onToggleRun and onStep', () => {
     const { onToggleRun, onStep } = setup();
 
-    fireEvent.click(screen.getByText('Play'));
+    fireEvent.click(screen.getByTestId('play'));
     expect(onToggleRun).toHaveBeenCalled();
 
-    fireEvent.click(screen.getByText('Next'));
+    fireEvent.click(screen.getByTestId('next'));
     expect(onStep).toHaveBeenCalled();
   });
 
   it('parses input and calls onCustomStep with numeric value', () => {
     const { onCustomStep } = setup();
 
-    const input = screen.getByRole('textbox');
+    const input = screen.getByTestId('inputNext') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '5' } });
 
-    fireEvent.click(screen.getByText('Next Custom'));
+    fireEvent.click(screen.getByTestId('nextCustom'));
     expect(onCustomStep).toHaveBeenCalledWith(5);
   });
 
   it('sends 0 to onCustomStep for invalid input', () => {
     const { onCustomStep } = setup();
 
-    const input = screen.getByRole('textbox');
+    const input = screen.getByTestId('inputNext') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'abc' } });
 
-    fireEvent.click(screen.getByText('Next Custom'));
+    fireEvent.click(screen.getByTestId('nextCustom'));
     expect(onCustomStep).toHaveBeenCalledWith(0);
   });
 });

@@ -24,16 +24,17 @@ export const Controls: React.FC<ControlsProps> = ({
 
   return (
     <div className='controls-contaier'>
-      <Button onClick={handleReset}>Reset</Button>
-      <Button onClick={onToggleRun}>{running ? 'Pause' : 'Play'}</Button>
-      <Button onClick={onStep}>Next</Button>
+      <Button onClick={handleReset} data-testid="reset">Reset</Button>
+      <Button onClick={onToggleRun} data-testid="play">{running ? 'Pause' : 'Play'}</Button>
+      <Button onClick={onStep} data-testid="next">Next</Button>
        <input
         type='string'
         value={stepCount}
         onChange={(e) => setStepCount(e.target.value)}
         style={{ width: 60, marginLeft: 8 }}
+        data-testid="inputNext"
       />
-      <Button onClick={handleClickCustom}>Next Custom</Button>
+      <Button onClick={handleClickCustom} data-testid="nextCustom">Next Custom</Button>
     </div>
   );
 };
