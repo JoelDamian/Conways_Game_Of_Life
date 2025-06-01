@@ -9,6 +9,8 @@ export interface ControlsProps {
   running: boolean;
   onToggleRun: () => void;
   onReset: () => void;
+  onStep: () => void;
+  onCustomStep: (count: number) => void; 
 }
 
 export type GameBoardrops = {

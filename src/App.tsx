@@ -42,6 +42,14 @@ function App() {
     setGrid(createEmptyGrid());
   };
 
+   const step = () => {
+    nextGen();
+  };
+
+  const stepCustom = (count: number) => {
+    for (let i = 0; i < count; i++) nextGen();
+  };
+
   return (
     <div className='app-container'>
       <h1>Conway's Game of Life</h1>
@@ -49,8 +57,9 @@ function App() {
       <Controls
         running={running}
         onToggleRun={() => setRunning(!running)}
-        onReset={resetGrid}
-      />
+        onReset={resetGrid} 
+        onStep={step} 
+        onCustomStep={stepCustom}/>
     </div>
   );
 }
