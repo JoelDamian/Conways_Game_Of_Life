@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { type ControlsProps } from '../../models/grid-models';
 import { Button } from '../../custom-components/button/Button';
 import './Controls.css';
@@ -9,12 +10,30 @@ export const Controls: React.FC<ControlsProps> = ({
   onStep,
   onCustomStep,
 }) => {
+    const [stepCount, setStepCount] = useState<string>("0");
+
+    const handleClickCustom = () => {
+      const parsedInput = parseInt(stepCount) || 0;
+      onCustomStep(parsedInput);
+    }
+
+    const handleReset = () => {
+      setStepCount("0");
+      onReset();
+    }
+
   return (
     <div className='controls-contaier'>
-      <Button onClick={onReset}>Reset</Button>
+      <Button onClick={handleReset}>Reset</Button>
       <Button onClick={onToggleRun}>{running ? 'Pause' : 'Play'}</Button>
       <Button onClick={onStep}>Next</Button>
-      <Button onClick={onCustomStep}>Next x10</Button>
+       <input
+        type='string'
+        value={stepCount}
+        onChange={(e) => setStepCount(e.target.value)}
+        style={{ width: 60, marginLeft: 8 }}
+      />
+      <Button onClick={handleClickCustom}>Next Custom</Button>
     </div>
   );
 };

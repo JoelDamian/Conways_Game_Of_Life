@@ -46,8 +46,8 @@ function App() {
     nextGen();
   };
 
-  const stepCustom = () => {
-    for (let i = 0; i < 10; i++) nextGen();
+  const stepCustom = (count: number) => {
+    for (let i = 0; i < count; i++) nextGen();
   };
 
   return (
