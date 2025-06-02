@@ -1,0 +1,6 @@
+.app-container {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    gap: 16px;
+}
