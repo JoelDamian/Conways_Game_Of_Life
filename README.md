@@ -2,7 +2,7 @@
 Conway's Game of Life with React and Typescript
 
 # Interface
-![Game of Life Screenshot](https://github.com/JoelDamian/Conways_Game_Of_Life/blob/feature/Config-Doc/public/game-of-life.png?raw=true)
+![Game of Life Screenshot](https://github.com/JoelDamian/Conways_Game_Of_Life/blob/feature/develop/public/game-of-life.png?raw=true)
 
 # Run Project local
 - Open cmd
